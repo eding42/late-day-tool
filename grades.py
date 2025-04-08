@@ -30,6 +30,10 @@ def convert_lateness_to_days(lateness_str):
     # - 1 minute is 1/1440 of a day
     # - 1 second is 1/86400 of a day
     lateness_in_days = (hours / 24) + (minutes / 1440) + (seconds / 86400)
+
+    if lateness_in_days < (1/24):
+        print("Since late days are less than 1 hour, we will round to 0.0")
+        return 0.0
     
     # Round the final result to 4 decimal places for consistency
     lateness_in_days = round(lateness_in_days, 4)
